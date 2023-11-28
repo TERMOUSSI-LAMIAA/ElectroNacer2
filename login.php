@@ -1,3 +1,39 @@
+<?php
+session_start();
+include 'db.php';
+
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    try {
+        // Update column names in the query
+        $query = "SELECT * FROM utilisateur WHERE login_ = :username AND psword = :password";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+
+        if ($stmt->rowCount() == 1) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+
+            header("Location: home.php");
+            exit();
+        } else {
+            echo "Invalid username or password.";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
+    $pdo = null;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +54,7 @@
 
 <body class="body-login">
     <div class="signup-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form action="" method="post">
             <h2>Login</h2>
             <p>Please fill out this form to log into your account!</p>
             <hr>

@@ -20,9 +20,9 @@
         <div>
             <div class="sidebar">
                 <div>
-                    <p class="active" id="tousLesProduits">Accueil</p>
-                    <p>Catégorie</p>
-                    <p>Utilisateurs </p>
+                    <p><a href="home.php">Accueil</a></p>
+                    <p><a  href="categories.php">Catégorie</a></p>
+                    <p><a class="active" href="users.php">Utilisateurs</a></p>
                 </div>
                 <div class="user-div">
                     <img src="assets/images/user.png" alt="user" height="60" width="60">
