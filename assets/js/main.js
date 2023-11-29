@@ -14,26 +14,53 @@
 //     xhr.send();
 // }
 
-//categorie
+// add categorie
+// function openForm_add_cat() {
+//     document.querySelector('.dark').style.display = 'block';
+//     document.querySelector('.popup-form-add-cat').style.display = 'block';
+// }
+
+// function closeForm_add_cat() {
+//     document.querySelector('.dark').style.display = 'none';
+//     document.querySelector('.popup-form-add-cat').style.display = 'none';
+// }
+//add updt categorie
+function openForm_updt_cat() {
+    document.querySelector('.popup-form-cat h2').textContent = 'Modifier le produit';
+    document.querySelector('.popup-form-cat input[type="submit"]').value = 'Modifier';
+    document.querySelector('.dark').style.display = 'block';
+    document.querySelector('.popup-form-cat').style.display = 'block';
+}
 function openForm_add_cat() {
+    document.querySelector('.popup-form-cat h2').textContent = 'Ajouter un produit';
+    document.querySelector('.popup-form-cat input[type="submit"]').value = 'Ajouter';
     document.querySelector('.dark').style.display = 'block';
-    document.querySelector('.popup-form-add-cat').style.display = 'block';
+    document.querySelector('.popup-form-cat').style.display = 'block';
 }
+function closeForm_cat() {
 
-function closeForm_add_cat() {
     document.querySelector('.dark').style.display = 'none';
-    document.querySelector('.popup-form-add-cat').style.display = 'none';
+    document.querySelector('.popup-form-cat').style.display = 'none';
 }
-// produit
+// add/updt produit
+function openForm_updt_prd() {
+    document.querySelector('.popup-form-prod h2').textContent = 'Modifier le produit';
+    document.querySelector('.popup-form-prod input[type="submit"]').value = 'Modifier';
+    document.querySelector('.dark').style.display = 'block';
+    document.querySelector('.popup-form-prod').style.display = 'block';
+}
 function openForm_add_prd() {
+    document.querySelector('.popup-form-prod h2').textContent = 'Ajouter un produit';
+    document.querySelector('.popup-form-prod input[type="submit"]').value = 'Ajouter';
     document.querySelector('.dark').style.display = 'block';
-    document.querySelector('.popup-form-add-prod').style.display = 'block';
+    document.querySelector('.popup-form-prod').style.display = 'block';
+}
+function closeForm_prd() {
+
+    document.querySelector('.dark').style.display = 'none';
+    document.querySelector('.popup-form-prod').style.display = 'none';
 }
 
-function closeForm_add_prd() {
-    document.querySelector('.dark').style.display = 'none';
-    document.querySelector('.popup-form-add-prod').style.display = 'none';
-}
 //filter by cat and price
 function filterProducts() {
     var selectedCategory = document.getElementById("categories").value;

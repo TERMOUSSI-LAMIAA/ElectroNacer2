@@ -48,11 +48,9 @@ include 'db.php';
                     <button class="addCat-btn" onclick="openForm_add_cat()">Ajouter catégorie</button>
                     <div class="dark" onclick="closeForm_add_cat()"></div>
                     <div class="popup-form-add-cat popup-form">
-                        <span class="close-btn" onclick="closeForm()">X</span>
-                        <h2>Ajouter une catégorie</h2>
-                        <!-- Add your form elements here -->
+                        <span class="close-btn" onclick="closeForm_add_cat()">X</span>
+                        <h2></h2>
                         <form>
-                            <!-- Your form fields go here -->
                             <label>Id categorie:</label>
                             <input type="text" id="id_category" name="id_category"><br>
                             <label>Nom categorie:</label>
@@ -61,7 +59,7 @@ include 'db.php';
                             <input type="file" id="img_category" name="img_category"><br>
                             <label>Description categorie:</label>
                             <input type="text" id="desc_category" name="desc_category"><br>
-                            <input type="submit" value="Ajouter">
+                            <input type="submit" value="">
                         </form>
                     </div>
                     <table>
@@ -93,7 +91,7 @@ include 'db.php';
                                                     height="20">
                                             </button>
                                             <button class="delete-button">
-                                                <img src="assets/images/delete-svgrepo-com.svg" alt="delete Icon" width="20"
+                                            <img src="assets/images/hide-svgrepo-com.svg" alt="hide Icon" width="20"
                                                     height="20">
                                             </button>
                                         </div>

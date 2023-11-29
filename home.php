@@ -51,7 +51,9 @@ include 'db.php';
             </div>
             <div class="user-div">
                 <img src="assets/images/user.png" alt="user" height="60" width="60">
-                <p>Admin name </p>
+                <p>
+                    <?= $_SESSION['username'] ?>
+                </p>
             </div>
         </div>
 
@@ -65,11 +67,12 @@ include 'db.php';
             if ($result) {
                 ?>
                 <div class="content">
+                    <!-- add form -->
                     <button class="addCat-btn" onclick="openForm_add_prd()">Ajouter produit</button>
-                    <div class="dark" onclick="closeForm_add_prd()"></div>
-                    <div class="popup-form-add-prod popup-form">
-                        <span class="close-btn" onclick="closeForm()">X</span>
-                        <h2>Ajouter un produit</h2>
+                    <div class="dark" onclick="closeForm_prd()"></div>
+                    <div class="popup-form-prod popup-form">
+                        <span class="close-btn" onclick="closeForm_prd()">X</span>
+                        <h2></h2>
                         <form>
                             <label>Reference :</label>
                             <input type="text" id="id_prod" name="id_prod"><br>
@@ -87,7 +90,13 @@ include 'db.php';
                             <input type="text" id="offre" name="offre"><br>
                             <label>Description :</label>
                             <input type="text" id="desc_prod" name="desc_prod"><br>
-                            <input type="submit" value="Ajouter">
+                            <label>Categorie :</label>
+                            <select id="categories" name="categories">
+                                <option value="2">Boitiers électroniques</option>
+                                <option value="3">Capteurs électroniques</option>
+                                <option value="1">Piles</option>
+                            </select><br>
+                            <input type="submit" value="">
                         </form>
                     </div>
                     <table>
@@ -134,12 +143,12 @@ include 'db.php';
                                     </td>
                                     <td>
                                         <div class="action-buttons">
-                                            <button class="edit-button">
+                                            <button class="edit-button" onclick="openForm_updt_prd()">
                                                 <img src="assets/images/edit-svgrepo-com.svg" alt="Edit Icon" width="20"
                                                     height="20">
                                             </button>
                                             <button class="delete-button">
-                                                <img src="assets/images/delete-svgrepo-com.svg" alt="delete Icon" width="20"
+                                                <img src="assets/images/hide-svgrepo-com.svg" alt="hide Icon" width="20"
                                                     height="20">
                                             </button>
                                         </div>
