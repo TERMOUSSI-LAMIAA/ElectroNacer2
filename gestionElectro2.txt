@@ -1,0 +1,48 @@
+create table utilisateur (
+    login_ varchar(50)  PRIMARY KEY,
+    psword varchar(50)  NOT NULL  UNIQUE ,
+    email varchar(60) NOT NULL,
+    is_admin boolean DEFAULT false,
+    is_approved BOOLEAN DEFAULT false
+);
+CREATE TABLE categorie(
+    idCat int PRIMARY KEY,
+    nomCat varchar(50)  NOT NULL,
+	descCat varchar(200) NOT NULL,
+    photoCat  BLOB NOT NULL
+);
+);*/
+create table produit (
+    ref_prod varchar(50) PRIMARY KEY,
+    image BLOB NOT NULL,
+    etiquette varchar(50)  NOT NULL,
+    code_barre varchar(20) NOT NULL,
+    pr_achat float  NOT NULL,
+    pr_final float  NOT NULL,
+    offre_pr float DEFAULT 0 ,
+    descProd varchar(200) NOT NULL,
+    qte_min INT  NOT NULL,
+    qte_stock INT  NOT NULL,
+    fk_idCat INT NOT NULL, 
+    FOREIGN KEY (fk_idCat) REFERENCES categorie(idCat) 
+);
+INSERT INTO utilisateur (login, psword, email, is_admin, is_approved) 
+VALUES ('admin1', 'password1', 'admin1@gmail.com', true, true);
+INSERT INTO categorie (idCat, nomCat, descCat, photoCat)
+VALUES (1, 'Piles', 'Les piles sont des dispositifs énergétiques portables qui fournissent une source d alimentation électrique pour une variété d appareils électroniques. ', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/piles.png')),
+(2, 'Boîtiers électroniques', ' Les boîtiers électroniques jouent un rôle crucial dans l industrie électronique en offrant un environnement sûr et souvent étanche pour les circuits, les cartes électroniques, les connexions et d autres composants. ', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/Boîtiers-électroniques.png')),
+(3, 'capteurs  électroniques ', ' Les capteurs électroniques sont des dispositifs essentiels dans le domaine de l électronique et de l automatisation, conçus pour détecter et mesurer des variations physiques ou environnementales et les convertir en signaux électriques. ', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/capteurs _electronique.png'));*/
+INSERT INTO produit (ref_prod, image, etiquette, code_barre, pr_achat, pr_final, descProd, qte_min, qte_stock, fk_idCat)
+VALUES ('ABC123', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/CapteurBaromètre.png') , 'Capteur Baromètre', '123456789', 180.5, 210.0, 'Un capteur baromètre est un dispositif électronique conçu pour mesurer la pression atmosphérique ambiante.', 5, 50, 3),
+('ABO727', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/'), 'Capteur de Force', '524789658', 75, 90.5, 'Un capteur de force, également appelé capteur de pesée ou capteur de charge, est un dispositif conçu pour mesurer la force exercée sur lui.', 5, 50, 3);
+
+INSERT INTO produit (ref_prod, image, etiquette, code_barre, pr_achat, pr_final, descProd, qte_min, qte_stock, fk_idCat)
+VALUES ('ABC123', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/CapteurBaromètre.jpg') , 'Capteur Baromètre', '123456789', 180.5, 210.0, 'Un capteur baromètre est un dispositif électronique conçu pour mesurer la pression atmosphérique ambiante.', 5, 50, 3),
+('ABO727', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/capteur-de-force.jpg'), 'Capteur de Force', '524789658', 75, 90.5, 'Un capteur de force, également appelé capteur de pesée ou capteur de charge, est un dispositif conçu pour mesurer la force exercée sur lui.', 5, 4, 3),
+('MLO727', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/capteur_de_gaz.jpg'), 'Capteur de Gaz', '987451472', 20, 30.5, 'Les capteurs de gaz sont des dispositifs sensoriels conçus pour détecter et mesurer la présence de gaz spécifiques dans l environnement.', 5, 25, 3),
+('JPH145', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/Boîtier_de_Manoeuvre.jpg'), 'Boîtier de Manoeuvre', '142020362', 30, 60.5, 'Un boîtier de manoeuvre est un dispositif électronique ou mécanique conçu pour permettre le contrôle ou la manipulation d un système, d un appareil ou d une machine.', 5, 16, 2),
+('HNJ125', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/Boîtier_Étanche.jpg'), 'Boîtier Étanche', '541402147', 20, 40.5, 'Un boîtier étanche électronique est une enveloppe spécialement conçue pour protéger des composants électroniques sensibles de l eau, de l humidité, de la poussière et parfois même d autres éléments extérieurs tels que les chocs, les vibrations ou les températures extrêmes', 5, 3, 2),
+('JUY485', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/Boîtes_Blindées_RF.jpg'), 'Boîtes Blindées RF', '665254101', 80, 110, 'Les boîtes blindées RF, également appelées chambres anéchoïques ou boîtes de Faraday, sont des structures conçues pour fournir une isolation électromagnétique totale ou très élevée.', 5, 33, 2),
+('JNG452', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/Panasonic_4R25.jpg'), 'Panasonic 4R25', '200142563', 25, 40, 'La pile Panasonic 4R25 est une pile alcaline conçue pour des applications professionnelles nécessitant une alimentation fiable et de longue durée.', 5, 2, 1),
+('VFF144', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/Varta_4R25.jpg'), 'Varta 4R25', '784512012', 10, 17, 'La pile Varta 4R25 est une pile alcaline spécifiquement conçue pour des applications professionnelles et industrielles qui nécessitent une alimentation fiable et de longue durée.', 5, 22, 1),
+('KLO147', LOAD_FILE('C:/xampp/htdocs/electroNacer2/assets/images/Varta_LR20.jpg'), 'Varta LR20', '142015469', 10, 20, 'La pile Varta LR20 est une pile alcaline de format D, ce qui signifie qu elle a un diamètre standard de 34,2 mm et une hauteur de 61,5 mm.', 5, 10, 1);
