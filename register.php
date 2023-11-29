@@ -1,3 +1,35 @@
+<?php
+session_start();
+include 'db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //is a PHP superglobal variable that holds the request method used by the client to access the web server.
+
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+
+    try {
+
+        $stmt = $pdo->prepare("INSERT INTO utilisateur (login_, psword, email) VALUES (:username, :pass, :email)");
+
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':pass', $password);
+        $stmt->bindParam(':email', $email);
+
+        $stmt->execute();
+        $_SESSION['registration_success'] = true;
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+if (isset($_SESSION['registration_success']) && $_SESSION['registration_success']) {
+    echo "<script>alert('Registration successful!\\nPlease wait for the approval of your registration by the admin.');</script>";
+    unset($_SESSION['registration_success']); // Reset the session variable
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +50,7 @@
 
 <body class="body-login">
     <div class="signup-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form action="" method="post">
             <h2>Sign Up</h2>
             <p>Please fill in this form to create an account!</p>
             <hr>
@@ -51,6 +83,7 @@
         </form>
         <div class="text-center">Already have an account? <a href="login.php">Login here</a></div>
     </div>
+
 
 </body>
 
