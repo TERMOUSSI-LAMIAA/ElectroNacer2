@@ -189,7 +189,6 @@ nav div {
   margin-bottom: 6px;
   margin-top: 8px;
   margin-left: 16px;
-
   box-sizing: border-box;
 }
 
@@ -258,12 +257,11 @@ th {
 /*edit / delete button */
 .action-buttons {
   display: flex;
-  gap: 8px; /* Adjust the spacing between buttons */
+  gap: 8px;
 }
 
 .action-buttons button {
   border: none;
-  color: white;
   padding: 8px 8px;
   cursor: pointer;
   border-radius: 4px;
@@ -343,4 +341,51 @@ th {
 
 .close-btn:hover {
   color: #333;
+}
+
+/* user page */
+.content-users {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  background-color: #179b81;
+  width: 100%;
+}
+.user-table table{
+  width:100%;
+}
+.admin-button,
+.approve-button,
+.reject-button {
+  border: none;
+  padding: 8px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.admin-button{
+  background-color: rgba(12, 12, 112, 0.505);
+}
+.admin-button:hover{
+  background-color: rgba(12, 12, 112, 0.400);
+}
+.approve-button{
+  background-color: rgba(255, 255, 255, 0.943)
+}
+.approve-button:hover{
+  background-color: rgb(138, 234, 138);
+}
+.reject-button{
+  background-color: rgb(229, 126, 126);
+}
+.reject-button:hover{
+  background-color: rgb(231, 86, 86);
+}
+.content-users h2{
+
+  color: #ffffff; /* Text color */
+    font-size: 24px; /* Font size */
+    margin-bottom: 10px; /* Bottom margin */
+    border-bottom: 2px solid #88e58b; /* Bottom border with a green color */
+    padding-bottom: 5px; /* Padding at the bottom of the title */
+
 }

@@ -18,7 +18,7 @@ include 'db.php';
     <nav>
         <img src="assets/images/logo.png" alt="logo" height="60" width="300">
         <div>
-            <p>Déconnexion</p>
+            <a style="text-decoration:none;color:white;" href="logout.php">Déconnexion</a>
         </div>
     </nav>
     <section class="container">
