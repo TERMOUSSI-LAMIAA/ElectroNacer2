@@ -70,11 +70,11 @@ if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="text" class="form-control" name="password" placeholder="Password" required="required">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required="required">
                 </div>
             </div>
             <div class="form-group">
-                <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a
+                <label class="checkbox-inline"><input type="checkbox" > I accept the <a
                         href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
             </div>
             <div class="form-group">

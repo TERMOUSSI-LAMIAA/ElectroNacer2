@@ -2,15 +2,11 @@
 session_start();
 include 'db.php';
 
-
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
     try {
-        // Update column names in the query
         $query = "SELECT * FROM utilisateur WHERE login_ = :username AND psword = :password";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':username', $username);
@@ -18,22 +14,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         if ($stmt->rowCount() == 1) {
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $username;
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            header("Location: home.php");
-            exit();
-        } else {
-            echo "Invalid username or password.";
-        }
+            if ($user['is_approved'] == true) {
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username;
+
+                if ($user['is_admin'] == true) {
+                    header("Location: index.php");
+                } else {
+                    header("Location: user/index.php");
+                }
+                exit();
+            } else {
+                echo '<script>alert("Your account is still pending admin approval.");</script>';
+            }
+        } 
+        //else {
+        //     echo "Invalid username or password.";
+        // }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
 
     $pdo = null;
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,13 +74,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="text" class="form-control" name="password" placeholder="Password" required="required">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required="required">
                 </div>
             </div>
             <div class="form-group">
-                <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a
+                <label class="checkbox-inline"><input type="checkbox" > I accept the <a
                         href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
             </div>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($stmt->rowCount() !== 1) {
+                    echo '<span style="color: #d9534f; font-size: 14px;">Invalid username or password.</span>';
+                }
+            }
+            ?>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg">Login</button>
             </div>
